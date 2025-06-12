@@ -1,0 +1,107 @@
+[
+  {
+    "id": 1,
+    "title": "Choose and set up state management (Provider or Riverpod)",
+    "description": "Decide between Provider and Riverpod, document the rationale, and set up the chosen package in the project.",
+    "dependsOn": [],
+    "subtasks": [
+      "Research Provider and Riverpod pros/cons for this use case",
+      "Document rationale for chosen state management in README or docs",
+      "Add the chosen package to pubspec.yaml",
+      "Set up basic state management structure in the project (e.g., create a provider or riverpod folder)"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Implement habit creation and storage logic",
+    "description": "Create models and logic for adding a new habit with a timer duration. Store habits using local storage (e.g., SharedPreferences, Hive).",
+    "dependsOn": [1],
+    "subtasks": [
+      "Define Habit model (fields: name, duration, streak, etc.)",
+      "Set up local storage solution (choose SharedPreferences, Hive, etc.)",
+      "Implement logic to add a new habit",
+      "Implement logic to load and save habits from/to storage",
+      "Write unit tests for habit creation and storage"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Implement timer functionality",
+    "description": "Develop accurate timer logic that works reliably, including when the app is backgrounded or interrupted.",
+    "dependsOn": [2],
+    "subtasks": [
+      "Design timer logic (start, stop, pause, resume)",
+      "Handle app backgrounding and interruptions",
+      "Integrate timer with habit model",
+      "Write unit tests for timer logic"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Add daily streak tracking and calculation",
+    "description": "Implement logic to increment a habit's streak only once per day and reset if a day is missed.",
+    "dependsOn": [3],
+    "subtasks": [
+      "Design streak calculation logic (increment, reset)",
+      "Integrate streak logic with timer completion",
+      "Persist streak data in storage",
+      "Write unit tests for streak logic"
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Design and build UI for core flows",
+    "description": "Create minimalist UI for adding, viewing, and managing habits, with clear timer and streak displays and easy start/stop controls.",
+    "dependsOn": [4],
+    "subtasks": [
+      "Design wireframes or mockups for main screens",
+      "Implement habit creation UI",
+      "Implement habit list and detail UI",
+      "Implement timer UI (start/stop controls, countdown)",
+      "Display streak counter in UI"
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Integrate all components and test",
+    "description": "Combine state management, storage, timer, streak logic, and UI. Test for timer accuracy, state consistency, and user experience.",
+    "dependsOn": [5],
+    "subtasks": [
+      "Integrate state management with UI and logic",
+      "Test timer and streak logic in the app",
+      "Test habit creation and persistence",
+      "Perform end-to-end user flow tests",
+      "Collect feedback and fix bugs"
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Implement edit and delete habit functionality",
+    "description": "Allow users to edit existing habits and delete habits they no longer want.",
+    "dependsOn": [2],
+    "subtasks": [
+      "Design edit habit UI (edit name, duration, etc.)",
+      "Implement edit habit logic in storage",
+      "Implement delete habit logic in storage",
+      "Update habit list UI to include edit/delete options",
+      "Write unit tests for edit and delete functionality"
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Implement sign-in and authentication (Google OAuth + Email/Password)",
+    "description": "Add a complete sign-in flow using Firebase Authentication, supporting both Google Sign-In (OAuth) and email/password sign-in.",
+    "dependsOn": [],
+    "subtasks": [
+      "Design sign-in UI (login, register, Google Sign-In, logout)",
+      "Create Firebase project and configure OAuth credentials for Google Sign-In",
+      "Integrate Firebase Auth SDK into Flutter project (flutterfire)",
+      "Implement email/password authentication flow",
+      "Implement Google Sign-In OAuth flow with Firebase",
+      "Handle authentication state with Provider or Riverpod (listen to auth changes)",
+      "Protect app routes/screens based on auth state (show login screen if not logged in)",
+      "Implement logout functionality",
+      "Write unit tests for authentication flow"
+    ]
+  }
+]

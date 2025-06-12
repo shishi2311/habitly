@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "290624247247",
+    "project_id": "habit-timer-c690a",
+    "storage_bucket": "habit-timer-c690a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:290624247247:android:6b4e85be2012b552bdaeba",
+        "android_client_info": {
+          "package_name": "com.test.my_flutter_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "290624247247-rgp3gkja5ftiv6qadfmefh9c0f6nrerl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-XG-UDkGhJGP3LXGQptBLzkBcihQmD2U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "290624247247-rgp3gkja5ftiv6qadfmefh9c0f6nrerl.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "290624247247-b6jeh1kcvblh0ls2fsmemkronbgh729g.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.test.myFlutter1"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

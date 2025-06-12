@@ -1,0 +1,74 @@
+<context>
+# Overview  
+Habit Timer is a productivity tool that helps users build and maintain positive habits by associating each habit with a customizable timer. The app enables users to set a habit (e.g., "Study 25 min"), track their progress with a daily streak counter, and manage their sessions efficiently. The goal is to encourage consistency and focus through simple, effective time management.
+
+# Core Features  
+- **Create Habit with Timer:**  
+  Users can define a habit and assign a timer duration (e.g., "Study 25 min", "Read 15 min").
+- **Start/Stop Timer:**  
+  Users can start or stop the timer for any habit. The timer should be visually prominent and easy to control.
+- **Daily Streak Counter:**  
+  The app tracks consecutive days the user completes the habit, displaying a streak count to motivate continued engagement.
+- **State Management:**  
+  Use either Provider or Riverpod for all state management to ensure scalability and maintainability.
+
+# User Experience  
+- **User Personas:**  
+  - Students aiming to improve study habits  
+  - Professionals seeking to build work routines  
+  - Anyone wanting to track and reinforce daily habits
+- **Key User Flows:**  
+  1. Add a new habit with a timer duration  
+  2. Start the timer for a habit  
+  3. Stop or complete the timer  
+  4. View and monitor daily streaks  
+- **UI/UX Considerations:**  
+  - Minimalist, distraction-free interface  
+  - Clear display of timer and streaks  
+  - Easy access to start/stop controls
+
+</context>
+<PRD>
+# Technical Architecture  
+- **Frontend:** Flutter (mobile-first, cross-platform)
+- **State Management:** Provider or Riverpod (choose one and apply consistently)
+- **Data Persistence:** Local storage (e.g., SharedPreferences, Hive, or similar) for habits and streaks
+- **Timer Logic:** Accurate timer implementation that handles app backgrounding and interruptions
+- **Streak Calculation:** Logic to increment streak only once per day per habit, reset if a day is missed
+
+# Development Roadmap  
+- **MVP Requirements:**  
+  - Habit creation with timer duration  
+  - Start/stop timer functionality  
+  - Daily streak counter per habit  
+  - Persistent storage for habits and streaks  
+  - Basic UI for adding, viewing, and managing habits
+- **Future Enhancements:**  
+  - Notifications/reminders  
+  - Multiple habits  
+  - Analytics and history  
+  - Customizable themes
+
+# Logical Dependency Chain
+1. Implement state management (Provider or Riverpod)
+2. Build habit creation and storage logic
+3. Implement timer functionality
+4. Add streak tracking and calculation
+5. Design and build UI for core flows
+6. Integrate all components and test
+
+- Prioritize getting a working timer and streak logic for a single habit before expanding to multiple habits or advanced features.
+
+# Risks and Mitigations  
+- **Timer accuracy:** Use Flutter best practices to ensure timer works reliably even if the app is backgrounded.
+- **State consistency:** Thoroughly test state management logic to avoid bugs in streak counting or timer resets.
+- **User engagement:** Keep UI simple and motivating; consider adding reminders in future versions.
+
+# Appendix  
+- **State Management Choice:**  
+  Decide between Provider and Riverpod at project start and document rationale.
+- **Technical References:**  
+  - Flutter documentation for timers and state management  
+  - Example apps using Provider/Riverpod for similar use cases
+
+</PRD>
