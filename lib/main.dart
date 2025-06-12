@@ -139,7 +139,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
-                        'No habits yet',
+                        'No habits yet!!',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
