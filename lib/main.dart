@@ -90,6 +90,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
     setState(() {
       _selectedItems.clear();
+      // Exit edit mode if there are no more habits
+      if (habitProvider.habits.isEmpty) {
+        _isEditMode = false;
+      }
     });
   }
 
