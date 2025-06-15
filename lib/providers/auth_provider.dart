@@ -12,6 +12,12 @@ class AuthProvider extends ChangeNotifier {
   // Stream of auth state changes
   Stream<User?> get authStateChanges => _auth.authStateChanges();
 
+  AuthProvider() {
+    _auth.authStateChanges().listen((User? user) {
+      notifyListeners();
+    });
+  }
+
   // Email/Password Sign Up
   Future<UserCredential> signUpWithEmail(String email, String password) async {
     try {
