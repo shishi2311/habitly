@@ -18,10 +18,8 @@ class HabitProvider with ChangeNotifier {
     if (_isInitialized) return;
 
     final user = _auth.currentUser;
-    print('Current user: ${user?.uid}'); // Debug log
 
     if (user != null) {
-      print('Initializing Firestore for user: ${user.uid}'); // Debug log
       // Subscribe to habits collection changes
       _habitsSubscription = _firestore
           .collection('users')
