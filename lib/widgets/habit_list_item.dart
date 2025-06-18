@@ -43,9 +43,7 @@ class HabitListItem extends StatelessWidget {
             child: ListTile(
               title: Text(
                 habit['name'],
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
               subtitle: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,9 +57,7 @@ class HabitListItem extends StatelessWidget {
                       ),
                     )
                   else
-                    Text(
-                      '${habit['durationMinutes']} minutes',
-                    ),
+                    Text('${habit['durationMinutes']} minutes'),
                   Text('Streak: ${habit['streak']} days'),
                 ],
               ),

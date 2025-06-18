@@ -104,10 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ? NetworkImage(user!.photoURL!)
                       : null,
                   child: user?.photoURL == null
-                      ? const Icon(
-                          Icons.person,
-                          color: Colors.white,
-                        )
+                      ? const Icon(Icons.person, color: Colors.white)
                       : null,
                 ),
               );
@@ -129,10 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             Text(
               'No habits yet!!',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 8),
             Text(
@@ -192,8 +186,8 @@ class _HomeScreenState extends State<HomeScreen> {
     return FloatingActionButton(
       onPressed: _isEditMode
           ? _selectedItems.isNotEmpty
-              ? _deleteSelectedItems
-              : null
+                ? _deleteSelectedItems
+                : null
           : () => showDialog(
               context: context,
               builder: (context) => const AddHabitDialog(),
@@ -201,10 +195,7 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: _isEditMode
           ? (_selectedItems.isNotEmpty ? Colors.red : Colors.grey)
           : Theme.of(context).colorScheme.primary,
-      child: Icon(
-        _isEditMode ? Icons.delete : Icons.add,
-        color: Colors.grey,
-      ),
+      child: Icon(_isEditMode ? Icons.delete : Icons.add, color: Colors.grey),
     );
   }
 }

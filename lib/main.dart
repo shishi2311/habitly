@@ -12,7 +12,7 @@ import 'package:Habitly/screens/account_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  
+
   final habitProvider = HabitProvider();
   await habitProvider.init();
 

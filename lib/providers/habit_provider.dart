@@ -64,11 +64,16 @@ class HabitProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  // Get the start of the day for a given DateTime
+  DateTime _startOfDay(DateTime date) {
+    return DateTime(date.year, date.month, date.day);
+  }
+
   // Check if two DateTime objects represent the same day
   bool _isSameDay(DateTime date1, DateTime date2) {
-    return date1.year == date2.year &&
-           date1.month == date2.month &&
-           date1.day == date2.day;
+    final day1 = _startOfDay(date1);
+    final day2 = _startOfDay(date2);
+    return day1.isAtSameMomentAs(day2);
   }
 
   // Increment the streak of a habit
@@ -77,15 +82,8 @@ class HabitProvider with ChangeNotifier {
       final now = DateTime.now();
       final lastCompleted = _habits[index]['lastCompleted'];
       
-      print('Debug - Current habit state:');
-      print('Name: ${_habits[index]['name']}');
-      print('Current streak: ${_habits[index]['streak']}');
-      print('Last completed: $lastCompleted');
-      print('Current time: $now');
-
       // First completion case
       if (lastCompleted == null) {
-        print('Debug - First completion');
         _habits[index]['streak'] = 1;
         _habits[index]['lastCompleted'] = now;
         _saveHabits();
@@ -100,31 +98,24 @@ class HabitProvider with ChangeNotifier {
       
       // If it's the same day, don't change the streak
       if (_isSameDay(now, lastCompletedDate)) {
-        print('Debug - Same day, no streak change');
         return;
       }
 
-      // Check if it's yesterday
-      final yesterday = DateTime(now.year, now.month, now.day - 1);
-      final isYesterday = _isSameDay(lastCompletedDate, yesterday);
+      final todayStart = _startOfDay(now);
+      final lastCompletedStart = _startOfDay(lastCompletedDate);
+      final daysDifference = todayStart.difference(lastCompletedStart).inDays;
 
-      print('Debug - Is yesterday: $isYesterday');
-
-      if (isYesterday) {
-        // Completed on consecutive days, increment streak
-        print('Debug - Consecutive day, incrementing streak');
+      // If completed on consecutive day (1 day difference), increment streak
+      if (daysDifference == 1) {
         _habits[index]['streak'] = (_habits[index]['streak'] as int) + 1;
-        _habits[index]['lastCompleted'] = now;
-        _saveHabits();
-        notifyListeners();
-      } else if (lastCompletedDate.isBefore(yesterday)) {
-        // More than one day has passed, reset streak
-        print('Debug - More than one day passed, resetting streak');
-        _habits[index]['streak'] = 1;
-        _habits[index]['lastCompleted'] = now;
-        _saveHabits();
-        notifyListeners();
+      } else {
+        // More than one day has passed, reset streak to 0
+        _habits[index]['streak'] = 0;
       }
+      
+      _habits[index]['lastCompleted'] = now;
+      _saveHabits();
+      notifyListeners();
     }
   }
 

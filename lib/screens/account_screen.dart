@@ -41,11 +41,7 @@ class _AccountScreenState extends State<AccountScreen> {
                   ? NetworkImage(user!.photoURL!)
                   : null,
               child: user?.photoURL == null
-                  ? const Icon(
-                      Icons.person,
-                      size: 40,
-                      color: Colors.white,
-                    )
+                  ? const Icon(Icons.person, size: 40, color: Colors.white)
                   : null,
             ),
             const SizedBox(height: 24),
@@ -99,10 +95,7 @@ class _AccountScreenState extends State<AccountScreen> {
                 ),
                 child: const Text(
                   'Log Out',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
               ),
             ),
