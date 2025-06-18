@@ -18,10 +18,7 @@ class HabitProvider with ChangeNotifier {
     if (_isInitialized) return;
 
     final user = _auth.currentUser;
-    print('Current user: ${user?.uid}'); // Debug log
-
     if (user != null) {
-      print('Initializing Firestore for user: ${user.uid}'); // Debug log
       // Subscribe to habits collection changes
       _habitsSubscription = _firestore
           .collection('users')
@@ -29,9 +26,6 @@ class HabitProvider with ChangeNotifier {
           .collection('habits')
           .snapshots()
           .listen((snapshot) {
-            print(
-              'Received Firestore snapshot with ${snapshot.docs.length} habits',
-            ); // Debug log
             _habits = snapshot.docs.map((doc) {
               final data = doc.data();
               return {
@@ -60,22 +54,15 @@ class HabitProvider with ChangeNotifier {
 
   // Add a new habit
   Future<void> addHabit(String name, int durationMinutes) async {
-    try {
-      final habit = {
-        'name': name,
-        'durationMinutes': durationMinutes,
-        'streak': 0,
-        'lastCompleted': null,
-        'createdAt': FieldValue.serverTimestamp(),
-      };
+    final habit = {
+      'name': name,
+      'durationMinutes': durationMinutes,
+      'streak': 0,
+      'lastCompleted': null,
+      'createdAt': FieldValue.serverTimestamp(),
+    };
 
-      print('Adding habit: $habit'); // Debug log
-      final docRef = await _userHabits().add(habit);
-      print('Successfully added habit with ID: ${docRef.id}'); // Debug log
-    } catch (e) {
-      print('Error adding habit: $e'); // Debug log
-      rethrow;
-    }
+    await _userHabits().add(habit);
   }
 
   // Get the start of the day for a given DateTime
