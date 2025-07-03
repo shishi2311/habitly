@@ -18,6 +18,14 @@ class _HomeScreenState extends State<HomeScreen> {
   bool _isEditMode = false;
   final Set<int> _selectedItems = {};
 
+  @override
+void initState() {
+  super.initState();
+  Future.microtask(() {
+    Provider.of<HabitProvider>(context, listen: false).init();
+  });
+}
+
   void _toggleEditMode() {
     setState(() {
       _isEditMode = !_isEditMode;
@@ -46,10 +54,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
     setState(() {
       _selectedItems.clear();
-      if (habitProvider.habits.isEmpty) {
-        _isEditMode = false;
-      }
-    });
+      _isEditMode = false; // ✅ Always exit edit mode
+   });
   }
 
   void _handleHabitCompletion(int index) {
